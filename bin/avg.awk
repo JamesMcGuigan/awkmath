@@ -1,9 +1,16 @@
-#!/usr/bin/awk -f
-# seq 1 10 | sum.awk  # == 5.5
+#!/usr/bin/runawk
+#
+# avg.awk - average a single column of numbers
+#
+
+#use "../modules/isnumber.awk"
 
 
 BEGIN { COUNT=0; SUM=0; }
 
-{ COUNT += 1; SUM += $1; }
+isnumber($1) { COUNT += 1; SUM += $1; }
 
-END { print SUM/COUNT }
+END {
+    if( COUNT == 0 ) { print 0; }
+    else             { print SUM/COUNT; }
+}
