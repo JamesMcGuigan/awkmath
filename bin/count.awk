@@ -1,4 +1,4 @@
-#!/usr/bin/runawk
+#!/usr/bin/env runawk
 #
 # count.awk - product of single column of numbers
 #

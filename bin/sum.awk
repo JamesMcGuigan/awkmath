@@ -1,4 +1,4 @@
-#!/usr/bin/runawk
+#!/usr/bin/env runawk
 #
 # sum.awk - sum a single column of numbers
 #

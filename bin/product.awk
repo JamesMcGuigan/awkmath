@@ -1,4 +1,4 @@
-#!/usr/bin/runawk
+#!/usr/bin/env runawk
 #
 # product.awk - count entries in a single column of numbers
 #
