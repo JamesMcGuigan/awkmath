@@ -1,6 +1,6 @@
 #!/usr/bin/env runawk
 #
-# sum.awk - sum a single column of numbers
+# sum.awk - sum of numeric entries in a single column
 #
 
 #use "../modules/isnumber.awk"

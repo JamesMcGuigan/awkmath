@@ -1,6 +1,6 @@
 #!/usr/bin/env runawk
 #
-# product.awk - count entries in a single column of numbers
+# product.awk - product of numeric entries in a single column
 #
 
 #use "../modules/isnumber.awk"

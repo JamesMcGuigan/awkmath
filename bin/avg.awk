@@ -1,6 +1,6 @@
 #!/usr/bin/env runawk
 #
-# avg.awk - average a single column of numbers
+# avg.awk - mean average of numeric entries in a single column
 #
 
 #use "../modules/isnumber.awk"
