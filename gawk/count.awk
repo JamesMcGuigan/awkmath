@@ -1,4 +1,4 @@
-#!/usr/bin/env gawk
+#!/usr/bin/gawk -f
 #
 # count.awk - count numeric entries in a single column of numbers
 #

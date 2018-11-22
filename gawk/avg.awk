@@ -1,4 +1,4 @@
-#!/usr/bin/env gawk
+#!/usr/bin/gawk -f
 #
 # avg.awk - mean average of numeric entries in a single column
 #

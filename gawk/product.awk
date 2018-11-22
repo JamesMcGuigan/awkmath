@@ -1,4 +1,4 @@
-#!/usr/bin/env gawk
+#!/usr/bin/gawk -f
 #
 # product.awk - product of numeric entries in a single column
 #
