@@ -3,6 +3,16 @@
 This is a functional programming toolkit of awk scripts 
 for command-line numerical computations
 
+## Awk Language Versions
+
+https://www.gnu.org/software/gawk/manual/html_node/Other-Versions.html
+- jawk = Java AWK - https://jawk.sourceforge.net/
+- pawk - Python varient of AWK - https://github.com/alecthomas/pawk
+- pawk - BKW AWK with CPU profiler - http://www.math.utah.edu/pub/pawk/pawk-20030606.tar.gz
+- awka - AWK -> C compiler - https://sourceforge.net/projects/awka
+
+
+
 ## RunAwk
 
 runawk is a small wrapper for AWK interpreter that impements modules 
