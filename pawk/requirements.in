@@ -1,0 +1,19 @@
+#
+# This file is input for pip-compile. Update this file, then run:
+#
+#    pip-compile
+#    pip-sync
+#
+# Or to check for version bump upgrades:
+#
+#    pip-review
+#
+
+# Python Buildchain Dependencies
+wheel==0.32.3
+pip-review==1.0
+pip-tools==3.1.0
+
+# Application Dependencies
+pawk
+itertools
