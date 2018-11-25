@@ -11,6 +11,7 @@ extern char _env_used;
 extern int _max_base_gc, _max_fn_gc;
 extern struct awka_fn_struct *_awkafn;
 jmp_buf context;
+a_VAR *OORS_awk = NULL;
 a_VAR *x_awk = NULL;
 a_VAR *y_awk = NULL;
 a_VAR *vector_awk = NULL;
@@ -29,20 +30,22 @@ void END();
 void
 END()
 {
+  awka_varcpy(OORS_awk, a_bivar[a_ORS]);
+  awka_strcpy(a_bivar[a_ORS], "");
   awka_vardblset(x_awk, 1);
   while ((awka_dbl2varcmp(x_awk->dval, max_nf_awk) <= 0))
   {
     awka_vardblset(y_awk, 1);
     while ((awka_dbl2varcmp(y_awk->dval, max_nr_awk) <= 0))
     {
-      awka_printf(NULL, 0, 0, awka_vararg(a_TEMP, _lits0_awka, awka_arraysearch(vector_awk, awka_arg2(a_TEMP, x_awk, y_awk), a_ARR_CREATE), NULL));
+      awka_print(NULL, 0, 0, awka_arg1(a_TEMP, awka_arraysearch(vector_awk, awka_arg2(a_TEMP, x_awk, y_awk), a_ARR_CREATE)));
       if ((awka_dbl2varcmp(y_awk->dval, max_nr_awk) != 0))
       {
-        awka_printf(NULL, 0, 0, awka_vararg(a_TEMP, a_bivar[a_FS], NULL));
+        awka_printf(NULL, 0, 0, awka_vararg(a_TEMP, a_bivar[a_OFS], NULL));
       }
       awka_poi(y_awk);
     }
-    awka_printf(NULL, 0, 0, awka_vararg(a_TEMP, a_bivar[a_RS], NULL));
+    awka_printf(NULL, 0, 0, awka_vararg(a_TEMP, OORS_awk, NULL));
     awka_poi(x_awk);
   }
 
@@ -82,6 +85,7 @@ main(int argc, char *argv[])
   _max_base_gc = 3;
   _max_fn_gc = 2;
 
+  awka_varinit(OORS_awk);
   awka_varinit(x_awk);
   awka_varinit(y_awk);
   awka_varinit(vector_awk);
@@ -90,7 +94,7 @@ main(int argc, char *argv[])
   awka_varinit(n_awk);
 
   awka_varinit(_litd0_awka); awka_setd(_litd0_awka) = 1;
-  awka_varinit(_lits0_awka); awka_strcpy(_lits0_awka, "%s");
+  awka_varinit(_lits0_awka); awka_strcpy(_lits0_awka, "");
 
   if (!_lvar) {
     malloc( &_lvar, 3 * sizeof(a_VAR *) );
@@ -99,16 +103,17 @@ main(int argc, char *argv[])
     _lvar[2] = NULL;
   }
 
-  malloc( &_gvar, 7 * sizeof(struct gvar_struct) );
-  awka_initgvar(0, "x_awk", x_awk);
-  awka_initgvar(1, "y_awk", y_awk);
-  awka_initgvar(2, "vector_awk", vector_awk);
+  malloc( &_gvar, 8 * sizeof(struct gvar_struct) );
+  awka_initgvar(0, "OORS_awk", OORS_awk);
+  awka_initgvar(1, "x_awk", x_awk);
+  awka_initgvar(2, "y_awk", y_awk);
+  awka_initgvar(3, "vector_awk", vector_awk);
   vector_awk->type = a_VARARR;
-  awka_initgvar(3, "max_nr_awk", max_nr_awk);
-  awka_initgvar(4, "max_nf_awk", max_nf_awk);
-  awka_initgvar(5, "n_awk", n_awk);
-  _gvar[6].name = NULL;
-  _gvar[6].var  = NULL;
+  awka_initgvar(4, "max_nr_awk", max_nr_awk);
+  awka_initgvar(5, "max_nf_awk", max_nf_awk);
+  awka_initgvar(6, "n_awk", n_awk);
+  _gvar[7].name = NULL;
+  _gvar[7].var  = NULL;
 
   malloc( &_awkafn, 1 * sizeof(struct awka_fn_struct) );
   _awkafn[0].name = NULL;
