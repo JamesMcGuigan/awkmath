@@ -4,7 +4,7 @@
 
      for( n = 1; n <= NF; n++ ) {
         # print n "," NR "=", $i
-        vector[n][NR] = $n
+        vector[n,NR] = $n
     }
 }
 END {
@@ -16,8 +16,8 @@ END {
 
     for( x = 1; x <= max_nf; x++ ) {
         for( y = 1; y <= max_nr; y++ ) {
-            print(vector[x][y])
-            # printf(vector[x][y] + 0 != 0 ? "%d" : "%s", vector[x][y])  # breaks with "01"
+            print(vector[x,y])
+            # printf(vector[x,y] + 0 != 0 ? "%d" : "%s", vector[x,y])  # breaks with "01"
             if( y != max_nr ) { printf(OFS) }
         }
         printf(OORS)
