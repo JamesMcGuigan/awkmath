@@ -31,19 +31,22 @@ export AWKPATH=${BATS_TEST_DIRNAME}/../modules/
     result="$( cat ./data/matrix_4_6.txt | gawk -f ./gawk/transpose.awk )"
     expected="$( cat ./data/matrix_4_6_T.txt )"
     echo ">$result<"
+    echo ">$expected<"
     [[ $result == $expected ]]
 }
 
 
 @test "gawk -f ./gawk/transpose.awk - magic_square_3.txt" {
-    ### Weird fail:
+    ### Weird BUG:
     ### 2 9 4
     ### 7 5 3
     ###  8
+    ### FIXED: avoid using printf("%s" or "%d") for untyped input
 
     result="$( cat ./data/magic_square_3.txt | gawk -f ./gawk/transpose.awk )"
     expected="$( cat ./data/magic_square_3_T.txt )"
     echo ">$result<"
+    echo ">$expected<"
     [[ $result == $expected ]]
 }
 
@@ -51,6 +54,7 @@ export AWKPATH=${BATS_TEST_DIRNAME}/../modules/
     result="$( cat ./data/magic_square_3.txt | gawk -f ./gawk/transpose.awk | gawk -f ./gawk/transpose.awk )"
     expected="$( cat ./data/magic_square_3.txt )"
     echo ">$result<"
+    echo ">$expected<"
     [[ $result == $expected ]]
 }
 
